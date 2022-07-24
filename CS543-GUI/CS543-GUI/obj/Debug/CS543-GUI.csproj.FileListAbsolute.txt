@@ -1,0 +1,12 @@
+C:\Users\tutas\Documents\GitHub\footballDataVisualization\CS543-GUI\CS543-GUI\bin\Debug\CS543-GUI.exe.config
+C:\Users\tutas\Documents\GitHub\footballDataVisualization\CS543-GUI\CS543-GUI\bin\Debug\CS543-GUI.exe
+C:\Users\tutas\Documents\GitHub\footballDataVisualization\CS543-GUI\CS543-GUI\bin\Debug\CS543-GUI.pdb
+C:\Users\tutas\Documents\GitHub\footballDataVisualization\CS543-GUI\CS543-GUI\obj\Debug\CS543-GUI.csproj.AssemblyReference.cache
+C:\Users\tutas\Documents\GitHub\footballDataVisualization\CS543-GUI\CS543-GUI\obj\Debug\CS543-GUI.csproj.SuggestedBindingRedirects.cache
+C:\Users\tutas\Documents\GitHub\footballDataVisualization\CS543-GUI\CS543-GUI\obj\Debug\CS543_GUI.Form1.resources
+C:\Users\tutas\Documents\GitHub\footballDataVisualization\CS543-GUI\CS543-GUI\obj\Debug\CS543_GUI.Form2.resources
+C:\Users\tutas\Documents\GitHub\footballDataVisualization\CS543-GUI\CS543-GUI\obj\Debug\CS543_GUI.Properties.Resources.resources
+C:\Users\tutas\Documents\GitHub\footballDataVisualization\CS543-GUI\CS543-GUI\obj\Debug\CS543-GUI.csproj.GenerateResource.cache
+C:\Users\tutas\Documents\GitHub\footballDataVisualization\CS543-GUI\CS543-GUI\obj\Debug\CS543-GUI.csproj.CoreCompileInputs.cache
+C:\Users\tutas\Documents\GitHub\footballDataVisualization\CS543-GUI\CS543-GUI\obj\Debug\CS543-GUI.exe
+C:\Users\tutas\Documents\GitHub\footballDataVisualization\CS543-GUI\CS543-GUI\obj\Debug\CS543-GUI.pdb

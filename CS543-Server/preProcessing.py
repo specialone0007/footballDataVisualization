@@ -11,7 +11,7 @@ from importantActionsHeatmap import drawImportantActionsHeatmap
 with open('exampleMatch.json') as f:
     data = json.load(f)
 
-pngLocation = 'C:/Users/furka/OneDrive/Documents/visual studio 2015/Projects/CS543-GUI/CS543-GUI/bin/Debug/Images/'
+pngLocation = 'C:/Users/tutas/Documents/GitHub/footballDataVisualization/CS543-GUI/CS543-GUI/bin/Debug/Images/'
 
 
 def uploadAllHeatMaps():

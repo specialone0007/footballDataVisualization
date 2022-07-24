@@ -23,7 +23,7 @@ uploadXgNodes()
 with open('exampleMatch.json') as f:
     data = json.load(f)
 
-pngLocation = 'C:/Users/furka/OneDrive/Documents/visual studio 2015/Projects/CS543-GUI/CS543-GUI/bin/Debug/Images/'
+pngLocation = 'C:/Users/tutas/Documents/GitHub/footballDataVisualization/CS543-GUI/CS543-GUI/bin/Debug/Images/'
 
 averageInPositionsDict, averageOutPositionsDict = getAveragePosDicts(data)
 playerActionLocations = getPlayerActionLocations(data)
@@ -50,7 +50,7 @@ class AveragePositions(Resource):
             if visualFilter == "In Position":
                 drawAveragePositions(data, teamAndFilter, averageInPositionsDict, fileLocation)
             else:
-                drawAveragePositions(data, teamAndFilter, averageOutPositionsDict,  fileLocation)
+                drawAveragePositions(data, teamAndFilter, averageOutPositionsDict, fileLocation)
         return teamAndFilter + ".png"
 
 
