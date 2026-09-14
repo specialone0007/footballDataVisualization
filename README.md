@@ -102,23 +102,19 @@ docs/legacy/     2022 report (PDF)
 legacy/          2022 Flask server + WinForms GUI sources, unchanged (build artefacts removed)
 ```
 
-## What changed since 2022
+## Latest improvements (2026 rewrite)
 
-- **Shot sequences stopped at the wrong place.** The 2022 code walked back through the whole
-  possession, so after a blocked shot the next shot three seconds later inherited the entire
-  build-up of the first. Sequences now end at the previous shot by the same team; a rebound is
-  its own sequence.
-- **Assist detection was by counting.** The old code assigned "Assist" to the first
-  non-shooter it met walking backwards through *all* actions; that is what the new
-  `ShotSequence.assister` does too, but on a correctly bounded chain, and Carry events (absent
-  from this 2018/19 snapshot, present in current StatsBomb files) are part of the chain.
-- **Two endpoints were crossed.** `/xg_scatter` drew the shot map and `/xg_nodes` drew the
-  timeline; the GUI showed the right image only because it made the same mistake in reverse.
-- **Everything was one match, one machine.** Absolute Windows paths, PNGs cached into the
-  GUI's `bin/Debug`, hard-coded team names. The loader now takes any StatsBomb events file or
-  fetches one by id; no state outside the returned figures.
-- Windows Forms client dropped; the CLI renders every figure in one go and the functions
-  return `Figure` objects for notebooks.
+- **Sharper shot sequences.** A sequence now starts at the previous shot by the same team, so
+  a rebound three seconds after a blocked shot is its own sequence with its own build-up rather
+  than repeating the first one. Carry events (present in current StatsBomb files) are part of
+  the chain.
+- **Roles per player.** `ShotSequence.role_of` labels each participant Shot / Assist /
+  Build-up on the bounded chain, and `involvement()` lists every chance a player took part in.
+- **Any match, any machine.** The loader takes any StatsBomb events file or fetches one by id
+  from open data; no absolute paths, no cached PNGs, no hard-coded team names.
+- **Library first.** Every plot returns a `Figure` for notebooks; the CLI renders the whole set
+  in one command; mplsoccer pitches replace hand-drawn lines.
+- **Tested and CI-checked**: 15 tests on the bundled match plus a full render on every push.
 
 ## Data licence
 
