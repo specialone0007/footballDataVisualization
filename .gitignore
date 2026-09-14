@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.venv/
+figures/
+# Visual Studio leftovers from the legacy GUI
+legacy/**/bin/
+legacy/**/obj/
+legacy/**/.vs/
+*.suo
+*.user
