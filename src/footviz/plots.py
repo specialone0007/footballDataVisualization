@@ -19,8 +19,9 @@ TEAM_COLOURS = ("#1f77b4", "#d62728")
 OUTCOME_MARKERS = {"Goal": ("*", 420), "Saved": ("o", 160), "Blocked": ("X", 160),
                    "Off T": ("s", 130), "Post": ("P", 160), "Wayward": ("s", 130),
                    "Saved Off Target": ("o", 160), "Saved to Post": ("o", 160)}
-PITCH_KW = dict(pitch_type="statsbomb", pitch_color="#f6f6f4", line_color="#555555",
-                linewidth=1.2)
+PITCH_KW = dict(pitch_type="statsbomb", pitch_color="#f6f6f4", line_color="#444444",
+                linewidth=1.2, line_zorder=2)
+KDE_KW = dict(fill=True, levels=30, thresh=0.05, cmap="Reds", alpha=0.7, zorder=1)
 
 
 def _pitch(**kw) -> tuple[Pitch, Figure, plt.Axes]:
@@ -54,8 +55,7 @@ def action_heatmap(match: Match, player: str, action: str) -> Figure:
     df = match.player_actions(player, action)
     pitch, fig, ax = _pitch()
     if len(df) >= 3:
-        pitch.kdeplot(df.x, df.y, ax=ax, fill=True, levels=40, thresh=0.03, cmap="Reds",
-                      alpha=0.85, zorder=1)
+        pitch.kdeplot(df.x, df.y, ax=ax, **KDE_KW)
     pitch.scatter(df.x, df.y, ax=ax, s=18, color="#222222", alpha=0.7, zorder=3)
     team = next((t for t in match.teams if match.jersey(t, player) is not None), "")
     ax.set_title(f"{player} ({team}) · {action} · {len(df)} events · attacking →",
@@ -179,7 +179,7 @@ def key_actions_heatmap(match: Match, team: str, sequences: list[ShotSequence],
             ys.append(a.y)
     pitch, fig, ax = _pitch()
     if len(xs) >= 3:
-        pitch.kdeplot(xs, ys, ax=ax, fill=True, levels=40, thresh=0.03, cmap="Reds", alpha=0.85)
+        pitch.kdeplot(xs, ys, ax=ax, **KDE_KW)
     pitch.scatter(xs, ys, ax=ax, s=18, color="#222222", alpha=0.7, zorder=3)
     n_seq = sum(s.team == team for s in sequences)
     ax.set_title(f"{team} · shots and the {last_n} actions before them · {n_seq} sequences, "
