@@ -96,13 +96,14 @@ def shot_sequence(match: Match, seq: ShotSequence) -> Figure:
     handles = [plt.Line2D([], [], **styles["Pass"], lw=2, label="pass"),
                plt.Line2D([], [], **styles["Carry"], lw=2, label="carry"),
                plt.Line2D([], [], **styles["Dribble"], lw=2, label="dribble"),
-               plt.Line2D([], [], color="#c0392b", lw=2,
-                          label=f"shot · {seq.outcome} · xG {seq.xg:.2f}")]
-    ax.legend(handles=handles, loc="lower left", fontsize=8, frameon=True)
-    sub_note = ("   " + ", ".join(f"{v} = {k}" for k, v in subs.items())) if subs else ""
-    ax.set_title(f"{seq.team} · shot sequence {seq.minute:02d}:{seq.second:02d} · {seq.shooter}"
-                 f" · {len(seq.build_up)} actions before the shot{sub_note}",
-                 loc="left", fontsize=11)
+               plt.Line2D([], [], color="#c0392b", lw=2, label="shot")]
+    ax.legend(handles=handles, loc="upper center", bbox_to_anchor=(0.5, -0.01), ncol=4,
+              fontsize=8, frameon=False)
+    ax.set_title(f"{seq.team} · shot at {seq.minute:02d}:{seq.second:02d} · {seq.shooter} · "
+                 f"{seq.outcome} · xG {seq.xg:.2f}\n"
+                 f"{len(seq.build_up)} on-ball actions before the shot · numbers are shirts"
+                 + (" · " + ", ".join(f"{v} = {k}" for k, v in subs.items()) if subs else ""),
+                 loc="left", fontsize=10)
     return fig
 
 
@@ -150,10 +151,12 @@ def xg_shot_map(match: Match) -> Figure:
                           color=TEAM_COLOURS[i], alpha=0.55 if not goal else 0.95,
                           marker="o" if not goal else "*", edgecolors="black", linewidth=0.6,
                           zorder=3 + goal, label=None)
-        for xi, yi, v in zip(x, y, s.xg, strict=True):
-            if v >= 0.15:
-                ax.annotate(f"{v:.2f}", (xi, yi), ha="center", va="bottom", fontsize=7,
-                            xytext=(0, 7), textcoords="offset points", zorder=6)
+        for xi, yi, v, goal in zip(x, y, s.xg, s.goal, strict=True):
+            if v >= 0.25 or goal:  # label only the big chances and the goals
+                ax.annotate(f"{v:.2f}", (xi, yi), ha="left", va="center", fontsize=7.5,
+                            xytext=(9, 0), textcoords="offset points", zorder=6,
+                            bbox=dict(boxstyle="round,pad=0.15", fc="white", ec="none",
+                                      alpha=0.8))
     left = f"← {match.teams[0]}  {score[match.teams[0]]} ({xg[match.teams[0]]:.2f} xG)"
     right = f"{match.teams[1]}  {score[match.teams[1]]} ({xg[match.teams[1]]:.2f} xG) →"
     ax.set_title(f"{left}      {right}\nmarker area ∝ xG · ★ = goal · each team shoots towards "
