@@ -6,7 +6,7 @@ dist/
 .pytest_cache/
 .ruff_cache/
 .venv/
-figures/
+/figures/
 # Visual Studio leftovers from the legacy GUI
 legacy/**/bin/
 legacy/**/obj/
