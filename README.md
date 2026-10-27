@@ -114,7 +114,7 @@ legacy/          2022 Flask server + WinForms GUI sources, unchanged (build arte
   from open data; no absolute paths, no cached PNGs, no hard-coded team names.
 - **Library first.** Every plot returns a `Figure` for notebooks; the CLI renders the whole set
   in one command; mplsoccer pitches replace hand-drawn lines.
-- **Tested and CI-checked**: 15 tests on the bundled match plus a full render on every push.
+- **Tested and CI-checked**: 15 tests on the bundled match plus a full render on every push to main.
 
 ## Data licence
 
